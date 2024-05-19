@@ -4,8 +4,8 @@ export default {
         equipments: [
             {
                 id: 0,
-                title: "Камера",
-                information: "Модель: canon e-120",
+                title: "Научный проект",
+                information: "Плачу любые деньги",
                 times: [
                     {
                         hour: "08:00-09:00",
@@ -59,8 +59,8 @@ export default {
             },
             {
                 id: 1,
-                title: "Микрофон",
-                information: "Вернуть на место!",
+                title: "Нужно для учебы",
+                information: "Нужно сделать за неделю",
                 times: [
                     {
                         hour: "08:00-09:00",

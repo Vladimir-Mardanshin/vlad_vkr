@@ -1,7 +1,40 @@
 <template>
   <div class="page" style="color: white;">
     
-    <v-btn @click="dialog=true"></v-btn>
+    <v-btn @click="dialog=true">Добавить бронь</v-btn>
+    <br>
+    <div style="height: 400px; margin-bottom: 30px;" class="container" v-for="equipment in getEquipment" :key="equipment.id">
+      <div class="top-half">
+
+        <div class="dbtn"> 
+          <v-btn @click="openInfo(equipment.information)" style="margin: 1.5%; border-radius: 10px;">Информация</v-btn>
+        </div>
+
+        <div class="ttit">
+          <h2>{{ equipment.title }}</h2>
+        </div>
+      </div>
+
+      <div class="bottom-half">
+
+        <div class="child1">
+          <div class="parent">
+            <div class="elem" :style="chengeTheme(time.employment)" v-for="(time, index) in equipment.times" :key="index">
+              {{ time.hour }}
+            </div>
+          </div>
+        </div>
+
+        <div class="child2" style="color: black;">
+          <div>
+            <v-btn @click="dialog = true"
+              style="width: 170px; margin-bottom: 19px; border-radius: 10px;">Узнать статус</v-btn>
+            <v-btn @click="openInfo(equipment.information)" style="width: 170px; border-radius: 10px;">Отменить</v-btn>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <v-dialog v-model="dialog" width="auto">
       <div class="fdial">
