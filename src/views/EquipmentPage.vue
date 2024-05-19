@@ -5,7 +5,6 @@
 
     <v-dialog v-model="dialog" width="auto">
       <div class="fdial">
-        <h3>Забронировать</h3>
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Цель</h4>
 
         <v-text-field label="Введите цель бронирования" v-model="name" hide-details="auto"></v-text-field>
