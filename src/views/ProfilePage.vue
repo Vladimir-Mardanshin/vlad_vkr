@@ -1,140 +1,64 @@
 <template>
-  <RightSideСalendar />
+  <div class="centered-container">
+        <h1 style="color: white; margin-bottom: 15px;">Вход</h1>
+        <div style="color: white; width: 300px;">
+            <v-text-field class="text-center" label="Почта" v-model="email" hide-details="auto"></v-text-field>
+            <v-text-field label="Пароль" v-model="password"></v-text-field>
+        </div>
+        <v-btn @click="enter" class="transparent-button">
+            Войти
+        </v-btn>
+        <div style="color: #C0C0C0; margin-top: 15px;">
+            Нет аккаунта? <router-link style="color: blue;" to="/registration">Зарегистрироваться</router-link>
+        </div>
+
+    </div>
 </template>
 
 <script>
-import RightSideСalendar from '../components/RightSideСalendar.vue';
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
-  components: {
-    RightSideСalendar
-  },
-  computed: {
-    ...mapGetters(["getItems"]),
-  },
-  methods: {
-    sogl() {
-      alert("Приглашение принято!");
+  computed: mapGetters(["getMail", "getPassword",]),
+    data() {
+        return {
+            email: '',
+            password: ''
+        };
     },
-    cans() {
-      alert("Приглашение отклонено!");
+
+    methods: {
+        ...mapMutations(["changeEntrance", "changeEmail"]),
+        enter() {
+            if ((this.email == '') || (this.password == '')) {
+                alert('Поля не могут быть пустыми!');
+            } else {
+              if (this.email == this.getMail && this.password == this.getPassword) {
+                this.changeEntrance('true');
+                this.$router.push('/space');
+              }
+              else {
+                alert('Неверный логин и/или пароль!');
+              }
+            }
+        },
     }
-  }
-}
+};
 </script>
-
+    
 <style scoped>
-.infoDial {
-  text-align: center;
-  background-color: #ececec;
-  width: 400px;
-  padding: 20px;
-  border-radius: 10px;
-}
-.el {
- margin: 5px;
- margin-left: 20px;
+.transparent-button {
+    width: 160px;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent !important;
 }
 
-.parent {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.centered-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
-
-.child1 {
-  width: 130%;
-  background-color: #ececec;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.child2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.ttit {
-  display: flex;
-  align-items: left;
-  margin-top: 140px;
-  margin-left: 2%;
-  color: black;
-}
-
-.dbtn {
-  display: flex;
-  align-items: left;
-}
-
-.top-half {
-  background-color: #C0C0C0;
-  height: 65%;
-}
-
-.bottom-half {
-  background-color: #ececec;
-  height: 35%;
-  display: flex;
-}
-
-.bottom-half>div {
-  margin-right: 10px;
-}
-
-.container {
-  height: 415px;
-  width: 100%;
-  border-radius: 10px;
-  text-align: left;
-  color: black;
-  background-color: #ececec;
-}
-
-.page {
-  margin-top: 4.5%;
-  color: azure;
-  margin-left: 3.4%;
-  width: 70%;
-}
-
-.forbd {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.forp {
-  border-radius: 10px;
-  background-color: #C0C0C0;
-  padding: 6px;
-}
-
-.faces-container {
-  height: 50px;
-  display: flex;
-  align-items: center;
-}
-
-.ftime {
-  width: 150px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
-
-.fdial {
-  background-color: #ececec;
-  width: 520px;
-  padding: 20px;
-  border-radius: 10px;
-}</style>
-   
+</style>

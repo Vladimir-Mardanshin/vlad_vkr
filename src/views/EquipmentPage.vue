@@ -1,16 +1,17 @@
 <template>
   <div class="page" style="color: white;">
     
+    <v-btn @click="dialog=true"></v-btn>
 
     <v-dialog v-model="dialog" width="auto">
       <div class="fdial">
         <h3>Забронировать</h3>
-        <h4 style="margin-top: 10px; margin-bottom: 10px;">Название</h4>
+        <h4 style="margin-top: 10px; margin-bottom: 10px;">Цель</h4>
 
-        <v-text-field label="Введите название мероприятия" v-model="name" hide-details="auto"></v-text-field>
+        <v-text-field label="Введите цель бронирования" v-model="name" hide-details="auto"></v-text-field>
 
         <h4 style="text-align: left; margin-top: 10px; margin-bottom: 10px;">
-          Выберите время мероприятия
+          Выберите время
         </h4>
         <v-btn :style="backcol[0]" @click="changeBaccol(0)" class="ftime">08:00 - 09:00</v-btn>
         <v-btn :style="backcol[1]" @click="changeBaccol(1)" class="ftime">09:00 - 10:00</v-btn>
@@ -21,27 +22,6 @@
         <v-btn :style="backcol[6]" @click="changeBaccol(6)" class="ftime">14:00 - 15:00</v-btn>
         <v-btn :style="backcol[7]" @click="changeBaccol(7)" class="ftime">15:00 - 16:00</v-btn>
         <v-btn :style="backcol[8]" @click="changeBaccol(8)" class="ftime">16:00 - 17:00</v-btn>
-
-        <h4>Ответственные лица</h4>
-        <div class="faces-container">
-          <div v-for="(face, index) in faces" :key="index">
-            <p class="forp" @click="deleteEl(index)" style="cursor: pointer; margin-right: 10px;">
-              {{ face }}
-            </p>
-          </div>
-
-          <v-menu location="bottom">
-            <template v-slot:activator="{ props }">
-              <p style="cursor: pointer;" v-bind="props" @click="check">+</p>
-            </template>
-
-            <v-list style="margin-top: 15px; text-align: center; border: 2px solid white;">
-              <v-list-item @click="addEl(people.name)" v-for="people in getPeoples" :key="people.id">
-                <v-list-item-title>{{ people.name }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </div>
 
         <hr style="margin-bottom: 10px;">
 

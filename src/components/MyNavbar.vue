@@ -1,29 +1,29 @@
 <template>
   <v-container fluid>
 
-    <v-app-bar :elevation="0" class="transparent">
+    <v-app-bar v-if="getEntrance == 'true'" :elevation="0" class="transparent">
 
       <div style="margin-left: auto; margin-right: 15px;">
 
-        <router-link to="/equipment" class="forb ">
+        <router-link v-if="getRoot == 'user'" to="/equipment" class="forb ">
           <button class="myButton">
             Аренда
           </button>
         </router-link>
 
-        <router-link to="/people" class="forb">
+        <router-link v-if="getRoot == 'user'" to="/people" class="forb">
           <button class="myButton">
             Виртуальная машина
           </button>
         </router-link>
 
-        <router-link to="/space" class="forb">
+        <router-link v-if="getRoot == 'admin'" to="/space" class="forb">
           <button class="myButton">
             Мониторинг
           </button>
         </router-link>
 
-        <router-link to="/" class="forb">
+        <router-link v-if="getRoot == 'admin'" to="/" class="forb">
           <button class="myButton">
             Заявки
           </button>
@@ -39,7 +39,7 @@
 
         <v-list style="margin-top: 15px; text-align: center; border: 2px solid white;">
 
-          <v-list-item>
+          <v-list-item v-if="getRoot">
             <v-list-item-title>{{ getUser }}</v-list-item-title>
           </v-list-item>
 
@@ -77,13 +77,13 @@
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
-  computed: mapGetters(["getUser", "getGender", "getMail", "getPhone", "getRoot", "getPassword", "getNumberVM"]),
+  computed: mapGetters(["getUser", "getGender", "getMail", "getPhone", "getRoot", "getPassword", "getNumberVM", "getEntrance"]),
   name: 'MyNavbar',
   methods: {
     ...mapMutations(["changeEntrance"]),
     exit() {
       this.changeEntrance(false);
-      this.$router.push('/entrance');
+      this.$router.push('/');
     }
   }
 

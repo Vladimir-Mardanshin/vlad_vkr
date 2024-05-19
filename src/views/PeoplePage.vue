@@ -1,6 +1,7 @@
 <template>
   <div class="page" style="color: white;">
 
+    <h1>Проверка</h1>
     <v-dialog v-model="dialog" width="auto">
       <div class="fdial">
 

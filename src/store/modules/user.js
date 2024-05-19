@@ -6,7 +6,7 @@ export default {
       gender: "Муж",
       mail: "i_dont_know_your_mail@mail.ru",
       phone: "89500603158",
-      root: "admin",
+      root: "user",
       password: "1234",
       numberVM: "8743560122",
       entrance: "false"
@@ -33,6 +33,9 @@ export default {
       },
       getNumberVM(state) {
         return state.numberVM;
+      },
+      getEntrance(state) {
+        return state.entrance;
       },
     },
 
